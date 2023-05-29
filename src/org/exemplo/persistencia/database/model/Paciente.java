@@ -1,5 +1,7 @@
 package org.exemplo.persistencia.database.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Paciente {
@@ -8,6 +10,9 @@ public class Paciente {
 	private String nome;
 	private Float altura;
 	private Float peso;
+	private List<Exame> exames;
+	
+	public Paciente() {};
 	
 	public Paciente(Integer id, String nome, Float altura, Float peso) {
 		super();
@@ -15,6 +20,7 @@ public class Paciente {
 		this.nome = nome;
 		this.altura = altura;
 		this.peso = peso;
+		exames = new ArrayList<>();
 	}
 
 	public Integer getId() {
@@ -51,12 +57,21 @@ public class Paciente {
 
 	@Override
 	public String toString() {
-		return "Paciente [id=" + id + ", nome=" + nome + ", altura=" + altura + ", peso=" + peso + "]";
+		return "Paciente [id=" + id + ", nome=" + nome + ", altura=" + altura + ", peso=" + peso + ", exames=" + exames
+				+ "]";
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public List<Exame> getExames() {
+		return exames;
+	}
+	
+	public void setExames(List<Exame> exames) {
+		this.exames = exames;
 	}
 
 	@Override

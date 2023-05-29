@@ -4,29 +4,43 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoBancoMySQL {
+import org.exemplo.persistencia.database.util.ConfigLoader;
 
-	private final static String DB_ADDRESS = "localhost";
-	private final static String DB_PORT = "3307";
-	private final static String DB_SCHEMA = "prontuario";
-	private final static String DB_USER = "root";
-	private final static String DB_PASSWORD = "root";
+public class ConexaoBancoMySQL implements IConnection{
+
+	private final static String DB_ADDRESS;
+	private final static String DB_PORT;
+	private final static String DB_SCHEMA;
+	private final static String DB_USER;
+	private final static String DB_PASSWORD;
 	
-	private static Connection connection;
-	
-	private ConexaoBancoMySQL() {
-		
+	static {
+		DB_ADDRESS = ConfigLoader.loadConfig().getProperty("DB_ADDRESS");
+		DB_PORT = ConfigLoader.loadConfig().getProperty("DB_PORT");
+		DB_SCHEMA = ConfigLoader.loadConfig().getProperty("DB_SCHEMA");
+		DB_USER = ConfigLoader.loadConfig().getProperty("DB_USER");
+		DB_PASSWORD = ConfigLoader.loadConfig().getProperty("DB_PASSWORD");
 	}
+	private Connection connection;
 	
-	
-	public static Connection getConnection() {
+	public Connection getConnection() {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://"+DB_ADDRESS+":"+DB_PORT+"/"+DB_SCHEMA, DB_USER, DB_PASSWORD);
 			return connection;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+
+	@Override
+	public void closeConnection() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
