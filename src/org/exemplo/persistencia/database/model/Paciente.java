@@ -91,5 +91,14 @@ public class Paciente {
 		return (float) (peso / Math.pow(altura, 2));
 	}
 	
-	
+	public Exame localeById(Integer id) {
+		Exame e = new Exame();
+		e.setId(id);
+		
+		if(exames.contains(e)) {
+			int index = exames.indexOf(e);
+			return exames.get(index);
+		}else
+			return null;
+	}
 }

@@ -9,6 +9,10 @@ public class Exame {
 	private String descricao;
 	private Integer idPaciente;
 	
+	public Exame() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Exame(Integer id, String nome, String descricao) {
 		super();
 		this.id = id;
@@ -78,7 +82,7 @@ public class Exame {
 		return "Exame [id=" + id + ", nome=" + nome + ", descricao=" + descricao + "]";
 	}
 	
-	
+
 	
 	
 }
