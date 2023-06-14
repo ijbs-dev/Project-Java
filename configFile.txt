@@ -1,5 +1,5 @@
-DB_ADDRESS = localhost
+DB_ADDRESS = LOCALHOST
 DB_PORT = 3307
-DB_SCHEMA = prontuario
+DB_SCHEMA = javaproject
 DB_USER = root
 DB_PASSWORD = root

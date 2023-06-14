@@ -21,7 +21,7 @@ public class ExameDAO implements IEntityDAO<Exame> {
 	@Override
 	public void save(Exame t) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO PRONTUARIO.EXAME VALUES (?,?,?,?);";
+		String sql = "INSERT INTO JAVAPROJECT.EXAME VALUES (?,?,?,?);";
 
 		try {
 			PreparedStatement ptsm = conn.getConnection().prepareStatement(sql);
@@ -90,7 +90,7 @@ public class ExameDAO implements IEntityDAO<Exame> {
 	@Override
 	public void delete(Exame t) {
 		// TODO Auto-generated method stub
-		String sql = "delete from prontuario.exame where id = ?;";
+		String sql = "delete from javaproject.exame where id = ?;";
 
 		try {
 			PreparedStatement pstm = conn.getConnection().prepareStatement(sql);
@@ -105,7 +105,7 @@ public class ExameDAO implements IEntityDAO<Exame> {
 	@Override
 	public List<Exame> findAll() {
 		List<Exame> lista = new ArrayList<>();
-		String sql = "SELECT * FROM PRONTUARIO.EXAME;";
+		String sql = "SELECT * FROM JAVAPROJECT.EXAME;";
 		ResultSet rs;
 		
 		try {

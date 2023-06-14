@@ -22,11 +22,11 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 	}
 	
 	public void save(Paciente p) {
-		String sql = "INSERT INTO PRONTUARIO.PACIENTE VALUES (?,?,?,?);";
+		String sql = "INSERT INTO javaproject.PACIENTE VALUES (?,?,?,?);";
 		
 		try {
 			PreparedStatement ptsm = conn.getConnection().prepareStatement(sql);
-			ptsm.setInt(1, 0);
+			ptsm.setInt(1, p.getId());
 			ptsm.setString(2, p.getNome());
 			ptsm.setFloat(3, p.getAltura());
 			ptsm.setFloat(4, p.getPeso());
@@ -44,7 +44,7 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 	}
 	
 	public void delete(Paciente p) {
-		String sql = "delete from prontuario.paciente where id = ?;";
+		String sql = "delete from javaproject.paciente where id = ?;";
 		
 		try {
 			PreparedStatement pstm = conn.getConnection().prepareStatement(sql);
@@ -132,8 +132,8 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 		
 		List<Paciente> listaPac = new ArrayList<>();
 		List<Exame> listaExa = new ArrayList<>();
-		String sql = "SELECT * FROM PRONTUARIO.PACIENTE;";
-		String sql2 = "SELECT * FROM PRONTUARIO.EXAME;";
+		String sql = "SELECT * FROM javaproject.PACIENTE;";
+		String sql2 = "SELECT * FROM javaproject.EXAME;";
 		PreparedStatement pstm;;
 		ResultSet rs;
 		Paciente p;
