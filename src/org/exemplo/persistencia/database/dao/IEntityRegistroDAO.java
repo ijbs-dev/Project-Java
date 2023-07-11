@@ -1,20 +1,18 @@
 package org.exemplo.persistencia.database.dao;
 
-import java.sql.Connection;
 import java.util.List;
 
 import org.exemplo.persistencia.database.model.Cliente;
 import org.exemplo.persistencia.database.model.ContaBancaria;
 import org.exemplo.persistencia.database.model.RegistroTransacao;
 
-public interface IEntityDAO <T>{
+public interface IEntityRegistroDAO <T>{
 
 	public void save(T t);
-	public Cliente findById(int idCliente);
-	//public Cliente findByCpf(String cpf);
+	public RegistroTransacao findById(Integer id);
 	public List<T> findAll();
 	public void update(T t);
 	public void delete(T t);
-	public double balancoEntreContas();
+	public List<RegistroTransacao> getExtrato(ContaBancaria contaExtrato, int mesExtrato, int anoExtrato);
 	
 }
